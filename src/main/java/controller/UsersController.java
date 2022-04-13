@@ -13,14 +13,14 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/api/v1")
 public class UsersController {
 
     @Autowired
     private UsersRepository usersRepository;
 
     // get users
-    @GetMapping("users")
+    @GetMapping("/users")
     public List<Users> getAllUsers() {
         return this.usersRepository.findAll();
     }
@@ -34,13 +34,13 @@ public class UsersController {
     }
 
     // save user
-    @PostMapping("users")
+    @PostMapping("/users")
     public Users createUser(@RequestBody Users user) {
         return this.usersRepository.save(user);
     }
 
     // update user
-    @PutMapping("users/{id}")
+    @PutMapping("/users/{id}")
     public ResponseEntity<Users> updateUser(@PathVariable(value = "id") Long userId,
                                             @Validated @RequestBody Users userDetails) throws ResourceNotFoundException {
         Users user = usersRepository.findById(userId)
@@ -54,7 +54,7 @@ public class UsersController {
     }
 
     //delete user
-    @DeleteMapping("users/{id}")
+    @DeleteMapping("/users/{id}")
     public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Long userId) throws ResourceNotFoundException {
         Users user = usersRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User with this id not found:: " + userId));

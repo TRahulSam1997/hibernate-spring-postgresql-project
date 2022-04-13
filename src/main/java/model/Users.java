@@ -5,25 +5,15 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class Users {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+
     private long userId;
-
-    @Column(name = "first_name")
     private String firstName;
-
-    @Column(name = "last_name")
     private String lastName;
-
-    @Column(name = "user_name")
     private String userName;
-
-    @Column(name = "email")
     private String email;
 
     public Users() {
-        super();
+//        super();
     }
 
     public Users(String firstName, String lastName, String userName, String email) {
@@ -34,6 +24,9 @@ public class Users {
         this.email = email;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //    @Column(name = "id", nullable = false)
     public long getUserId() {
         return userId;
     }
@@ -42,6 +35,7 @@ public class Users {
         this.userId = userId;
     }
 
+    @Column(name = "first_name", nullable = false)
     public String getFirstName() {
         return firstName;
     }
@@ -50,6 +44,7 @@ public class Users {
         this.firstName = firstName;
     }
 
+    @Column(name = "last_name", nullable = false)
     public String getLastName() {
         return lastName;
     }
@@ -58,6 +53,7 @@ public class Users {
         this.lastName = lastName;
     }
 
+    @Column(name = "user_name", nullable = false)
     public String getUserName() {
         return userName;
     }
@@ -66,11 +62,17 @@ public class Users {
         this.userName = userName;
     }
 
+    @Column(name = "email", nullable = false)
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "User [userId= " + userId + ", firstName=" + firstName + "]";
     }
 }
