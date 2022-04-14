@@ -17,7 +17,7 @@ public class Users {
     }
 
     public Users(String firstName, String lastName, String userName, String email) {
-        super();
+//        super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
@@ -62,7 +62,7 @@ public class Users {
         this.userName = userName;
     }
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email_address", nullable = false)
     public String getEmail() {
         return email;
     }
@@ -73,6 +73,6 @@ public class Users {
 
     @Override
     public String toString() {
-        return "User [userId= " + userId + ", firstName=" + firstName + "]";
+        return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName + ", email=" + email + "]";
     }
 }

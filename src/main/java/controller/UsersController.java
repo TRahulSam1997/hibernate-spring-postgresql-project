@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import repository.UsersRepository;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,8 +34,8 @@ public class UsersController {
 
     // save user
     @PostMapping("/users")
-    public Users createUser(@RequestBody Users user) {
-        return this.usersRepository.save(user);
+    public Users createUser(@Validated @RequestBody Users user) {
+        return usersRepository.save(user);
     }
 
     // update user
